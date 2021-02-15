@@ -50,12 +50,8 @@ void selectionSort(int* x, int k) {
 	{
 		min = i;
 		for (int j = i + 1; j < k; j++)
-		{
 			if (x[j] < x[min])
-			{
 				min = j;
-			}
-		}
 		int t = x[i];
 		x[i] = x[min];
 		x[min] = t;
