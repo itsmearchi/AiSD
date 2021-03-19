@@ -8,20 +8,6 @@ struct Single_List {
 Single_List* HEAD; //указатель на первый элемент списка
 
 
-
-struct Single_List2 {
-
-	char* DATA;
-	Single_List2* NEXT;
-};
-Single_List2* HEAD2; //указатель на первый элемент списка
-
-
-
-
-
-
-
 #pragma region Первое задание
 int make_single_list(float n, Single_List** head) {
 

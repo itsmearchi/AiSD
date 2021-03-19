@@ -27,7 +27,7 @@ int main() {
 	cout << "Количество элементов в списке: ";
 	cin >> N;
 	make_single_list2(N, &HEAD2);
-	cout << "Изнчальный список" << endl;
+	cout << "Изначальный список" << endl;
 	print_single_list2(HEAD2);
 
 	return 0;
