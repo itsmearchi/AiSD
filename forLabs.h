@@ -1,27 +1,40 @@
 #pragma once
 using namespace std;
 
-struct Single_List
-{
+struct Single_List {
 	float DATA;
 	Single_List* NEXT;
 };
 Single_List* HEAD; //указатель на первый элемент списка
-Single_List* CURRENT; //указатель на текущий элемент списка
 
 
-int make_single_list(int n, Single_List** head) {
+
+struct Single_List2 {
+
+	char* DATA;
+	Single_List2* NEXT;
+};
+Single_List2* HEAD2; //указатель на первый элемент списка
+
+
+
+
+
+
+
+#pragma region ѕервое задание
+int make_single_list(float n, Single_List** head) {
 
 
 	if (n > 0) {
 		(*head) = new Single_List;
 		cout << "¬ведите значение: ";
 		cin >> (*head)->DATA;
-		/*float s = (*head)->DATA;
-		s += (*head)->DATA;*/
+
 		(*head)->NEXT = NULL;
 		make_single_list(n - 1, &(*head)->NEXT);
 	}
+
 	return 0;
 }
 int print_single_list(Single_List* head) {
@@ -32,19 +45,29 @@ int print_single_list(Single_List* head) {
 	else cout << endl;
 	return 0;
 }
-
-int search_ind(int data)
+float search_ind(float data)
 {
-	int ind = 0;
+	float ind = 0;
 	for (Single_List* Current = HEAD; Current != nullptr; Current = Current->NEXT)
 	{
-		if (Current->DATA == data) { return ind += 2; }
+		if (Current->DATA == data) { return ind++; }
 		ind++;
 	}
 }
+int sum_list(Single_List* List)
+{
+	Single_List* p;
+	p = List;
+	float s = 0; int i = 1;
+	while (p != NULL)
+	{
+		s += p->DATA;
+		p = p->NEXT;
+	}
+	return s;
+}
+Single_List* insert_item_single_list(Single_List* Head, float Number, float DataItem) {
 
-Single_List* insert_item_single_list(Single_List* Head, int Number, int DataItem) {
-	Number--;
 	Single_List* NewItem = new Single_List;
 	NewItem->DATA = DataItem;
 	NewItem->NEXT = NULL;
@@ -68,3 +91,4 @@ Single_List* insert_item_single_list(Single_List* Head, int Number, int DataItem
 	}
 	return Head;
 }
+#pragma endregion
