@@ -1,3 +1,4 @@
+#include <iostream>
 #pragma once
 using namespace std;
 
@@ -7,7 +8,11 @@ struct Single_List {
 };
 Single_List* HEAD; //указатель на первый элемент списка
 
-
+struct Double_List {
+	char DATA[1];
+	Double_List* NEXT, * PREV;
+};
+Double_List* DOUBLE_HEAD = new Double_List;
 #pragma region Первое задание
 int make_single_list(float n, Single_List** head) {
 
@@ -16,11 +21,9 @@ int make_single_list(float n, Single_List** head) {
 		(*head) = new Single_List;
 		cout << "Введите значение: ";
 		cin >> (*head)->DATA;
-
 		(*head)->NEXT = NULL;
 		make_single_list(n - 1, &(*head)->NEXT);
 	}
-
 	return 0;
 }
 int print_single_list(Single_List* head) {
@@ -78,3 +81,73 @@ Single_List* insert_item_single_list(Single_List* Head, float Number, float Data
 	return Head;
 }
 #pragma endregion
+
+
+int make_double_list(int n, Double_List** Head, Double_List* Prev) {
+	if (n > 0) {
+		(*Head) = new Double_List;
+		//выделяем память под новый элемент
+		cout << "Введите значение: ";
+		cin >> (*Head)->DATA;
+		//вводим значение информационного поля
+		(*Head)->PREV = Prev;
+		(*Head)->NEXT = NULL;//обнуление адресного поля
+		make_double_list(n - 1, &((*Head)->NEXT), (*Head));
+	}
+	else (*Head) = NULL;
+	return 0;
+}
+int print_double_list(Double_List* Head) {
+	if (Head != NULL) {
+		cout << Head->DATA << "\t";
+		print_double_list(Head->NEXT);
+		//переход к следующему элементу
+	}
+	else cout << "\n";
+	return 0;
+}
+
+int search_ind_d(char* data)
+{
+	//Node<T>* Current = head;
+	int ind = 0;
+	for (Double_List* Current = DOUBLE_HEAD; Current != NULL; Current = Current->NEXT)
+	{
+		if (Current->DATA == data)return ind;
+		else ind++;
+	}
+}
+
+
+
+
+Double_List* delete_item_double_list(Double_List* Head, int Number) {
+	Double_List* ptr;//вспомогательный указатель
+	Double_List* Current = Head;
+	for (int i = 1; i < Number && Current != NULL; i++)
+		Current = Current->NEXT;
+	if (Current != NULL) {//проверка на корректность
+		if (Current->PREV == NULL) {//удаляем первый элемент
+			Head = Head->NEXT;
+			delete(Current);
+			Head->PREV = NULL;
+			Current = Head;
+		}
+		else {//удаляем непервый элемент
+			if (Current->NEXT == NULL) {
+				//удаляем последний элемент
+				Current->PREV->NEXT = NULL;
+				delete(Current);
+				Current = Head;
+			}
+			else {//удаляем непервый и непоследний элемент
+				ptr = Current->NEXT;
+				Current->PREV->NEXT = Current->NEXT;
+				Current->NEXT->PREV = Current->PREV;
+				delete(Current);
+				Current = ptr;
+			}
+		}
+	}
+	return Head;
+}
