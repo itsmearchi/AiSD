@@ -106,7 +106,6 @@ int print_double_list(Double_List* Head) {
 	else cout << "\n";
 	return 0;
 }
-
 int search_ind_d(char* data)
 {
 	//Node<T>* Current = head;
@@ -117,10 +116,6 @@ int search_ind_d(char* data)
 		else ind++;
 	}
 }
-
-
-
-
 Double_List* delete_item_double_list(Double_List* Head, int Number) {
 	Double_List* ptr;//вспомогательный указатель
 	Double_List* Current = Head;
