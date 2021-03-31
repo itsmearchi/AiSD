@@ -6,7 +6,7 @@ int main() {
 	float N, num;
 	char* data = (char*)"Ch";
 #pragma region Первое задание
-	cout << "Количество элементов в списке: ";
+	/*cout << "Количество элементов в списке: ";
 	cin >> N;
 	cout << "Искомое число: ";
 	cin >> num;
@@ -19,9 +19,27 @@ int main() {
 
 	insert_item_single_list(HEAD, search_ind(num), num);
 	cout << "Изменённый список" << endl;
-	print_single_list(HEAD);
+	print_single_list(HEAD);*/
 
 #pragma endregion
+	cout << "Количество элементов в списке: ";
+	cin >> N;
+
+	make_single_list2(N, &HEAD2);
+	cout << "Изначальный список" << endl;
+	print_single_list2(HEAD2);
+
+
+	cout << "Список из нечётных элементов" << endl;
+	single_list2even(HEAD2, 1);
+
+
+	/*delete_single_list(HEAD2);
+	cout << endl << "Список после удаления" << endl;
+	print_single_list2(HEAD2);*/
+
+
+
 	/*cout << "Количество элементов в списке: ";
 	cin >> N;
 

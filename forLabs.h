@@ -13,6 +13,53 @@ struct Double_List {
 	Double_List* NEXT, * PREV;
 };
 Double_List* DOUBLE_HEAD = new Double_List;
+struct Single_List2 {
+
+	char* DATA;
+	int INDEX;
+	Single_List2* NEXT;
+};
+Single_List2* HEAD2;
+
+
+int make_single_list2(float n, Single_List2** head) {
+
+	if (n > 0) {
+		char* str;
+		str = new char[10];
+		cout << "Enter element: ";
+		cin >> str;
+
+		*head = new Single_List2();
+		(*head)->DATA = str;
+		(*head)->NEXT = NULL;
+		make_single_list2(n - 1, &(*head)->NEXT);
+	}
+	return 0;
+}
+int print_single_list2(Single_List2* head) {
+	if (head != NULL) {
+		cout << head->DATA << "\t";
+		print_single_list2(head->NEXT);
+	}
+	else cout << endl;
+	return 0;
+}
+int single_list2even(Single_List2* head, int counter) {
+	for (Single_List2* Current = HEAD2; Current != NULL; Current = Current->NEXT) {
+		if (counter % 2 != 0)cout << Current->DATA << "\t";
+		counter += 1;
+	}
+	return 0;
+}
+void delete_single_list(Single_List2* Head) {
+	if (Head != NULL) {
+		delete_single_list(Head->NEXT);
+		delete Head;
+	}
+}
+
+
 #pragma region Первое задание
 int make_single_list(float n, Single_List** head) {
 
