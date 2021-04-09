@@ -9,7 +9,7 @@ struct Single_List {
 Single_List* HEAD; //указатель на первый элемент списка
 
 struct Double_List {
-	char DATA[1];
+	char* DATA;
 	Double_List* NEXT, * PREV;
 };
 Double_List* DOUBLE_HEAD = new Double_List;
@@ -38,7 +38,7 @@ int make_single_list2(float n, Single_List2** head) {
 	return 0;
 }
 int print_single_list2(Single_List2* head) {
-	if (head != NULL) {
+	if (head != nullptr) {
 		cout << head->DATA << "\t";
 		print_single_list2(head->NEXT);
 	}
@@ -53,12 +53,11 @@ int single_list2even(Single_List2* head, int counter) {
 	return 0;
 }
 void delete_single_list(Single_List2* Head) {
-	if (Head != NULL) {
+	if (Head != nullptr) {
 		delete_single_list(Head->NEXT);
 		delete Head;
 	}
 }
-
 
 #pragma region Первое задание
 int make_single_list(float n, Single_List** head) {
@@ -130,12 +129,27 @@ Single_List* insert_item_single_list(Single_List* Head, float Number, float Data
 #pragma endregion
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 int make_double_list(int n, Double_List** Head, Double_List* Prev) {
 	if (n > 0) {
-		(*Head) = new Double_List;
+		char* str;
+		str = new char[10];
+		cout << "Enter element: ";
+		cin >> str;
+		*Head = new Double_List;
 		//выделяем память под новый элемент
-		cout << "Введите значение: ";
-		cin >> (*Head)->DATA;
+		(*Head)->DATA = str;
 		//вводим значение информационного поля
 		(*Head)->PREV = Prev;
 		(*Head)->NEXT = NULL;//обнуление адресного поля
@@ -155,11 +169,10 @@ int print_double_list(Double_List* Head) {
 }
 int search_ind_d(char* data)
 {
-	//Node<T>* Current = head;
 	int ind = 0;
-	for (Double_List* Current = DOUBLE_HEAD; Current != NULL; Current = Current->NEXT)
-	{
-		if (Current->DATA == data)return ind;
+	for (Double_List* cur = DOUBLE_HEAD; cur != NULL; cur = cur->NEXT) {
+		if (cur->DATA == data)
+			return ++ind;
 		else ind++;
 	}
 }
