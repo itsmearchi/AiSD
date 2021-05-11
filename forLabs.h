@@ -97,7 +97,6 @@ float search_ind(float data)
 	float ind = 0;
 	for (Single_List* Current = HEAD; Current != nullptr; Current = Current->NEXT)
 	{
-
 		if (Current->DATA == data) { return ind++; }
 		ind++;
 	}
@@ -130,7 +129,7 @@ int sum_list(Single_List* List)
 	return s;
 }
 Single_List* insert_item_single_list(Single_List* Head, float Number, float DataItem) {
-
+	Number--;
 	Single_List* NewItem = new Single_List;
 	NewItem->DATA = DataItem;
 	NewItem->NEXT = NULL;
