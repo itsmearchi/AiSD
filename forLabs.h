@@ -1,7 +1,7 @@
 #include <iostream>
-#pragma once
-using namespace std;
 
+using namespace std;
+#pragma once
 struct Single_List {
 	int DATA;
 	Single_List* NEXT;
