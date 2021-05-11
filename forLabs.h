@@ -45,10 +45,18 @@ int print_single_list2(Single_List2* head) {
 	else cout << endl;
 	return 0;
 }
+int _print_single_list2(Single_List2* head) {
+	if (head != nullptr) {
+		cout << head->DATA << "\t";
+		_print_single_list2(head->NEXT);
+	}
+	else cout << "";
+	return 0;
+}
 int single_list2even(Single_List2* head, int counter) {
 	for (Single_List2* Current = HEAD2; Current != NULL; Current = Current->NEXT) {
 		if (counter % 2 != 0)cout << Current->DATA << "\t";
-		counter += 1;
+		counter++;
 	}
 	return 0;
 }
@@ -58,6 +66,10 @@ void delete_single_list(Single_List2* Head) {
 		delete Head;
 	}
 }
+
+
+
+
 
 #pragma region Первое задание
 int make_single_list(float n, Single_List** head) {
@@ -85,10 +97,26 @@ float search_ind(float data)
 	float ind = 0;
 	for (Single_List* Current = HEAD; Current != nullptr; Current = Current->NEXT)
 	{
+
 		if (Current->DATA == data) { return ind++; }
 		ind++;
 	}
+
+
+}void insert(float data)
+{
+	Single_List* NewItem = new Single_List;
+	NewItem->DATA = data;
+	NewItem->NEXT = NULL;
+	for (Single_List* Current = HEAD; Current != nullptr; Current = Current->NEXT)
+	{
+		if (Current->DATA == data) {
+			NewItem->NEXT = Current->NEXT;
+			Current->NEXT = NewItem;
+		}
+	}
 }
+
 int sum_list(Single_List* List)
 {
 	Single_List* p;
