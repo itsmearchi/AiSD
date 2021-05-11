@@ -22,56 +22,12 @@ struct Single_List2 {
 Single_List2* HEAD2;
 
 
-int make_single_list2(float n, Single_List2** head) {
-
-	if (n > 0) {
-		char* str;
-		str = new char[10];
-		cout << "Enter element: ";
-		cin >> str;
-
-		*head = new Single_List2();
-		(*head)->DATA = str;
-		(*head)->NEXT = NULL;
-		make_single_list2(n - 1, &(*head)->NEXT);
-	}
-	return 0;
-}
-int print_single_list2(Single_List2* head) {
-	if (head != nullptr) {
-		cout << head->DATA << "\t";
-		print_single_list2(head->NEXT);
-	}
-	else cout << endl;
-	return 0;
-}
-int _print_single_list2(Single_List2* head) {
-	if (head != nullptr) {
-		cout << head->DATA << "\t";
-		_print_single_list2(head->NEXT);
-	}
-	else cout << "";
-	return 0;
-}
-int single_list2even(Single_List2* head, int counter) {
-	for (Single_List2* Current = HEAD2; Current != NULL; Current = Current->NEXT) {
-		if (counter % 2 != 0)cout << Current->DATA << "\t";
-		counter++;
-	}
-	return 0;
-}
-void delete_single_list(Single_List2* Head) {
-	if (Head != nullptr) {
-		delete_single_list(Head->NEXT);
-		delete Head;
-	}
-}
 
 
 
 
 
-#pragma region Первое задание
+#pragma region 8.1
 int make_single_list(float n, Single_List** head) {
 
 
@@ -159,6 +115,57 @@ Single_List* insert_item_single_list(Single_List* Head, float Number, float Data
 
 
 
+#pragma region 8.2
+
+
+int make_single_list2(float n, Single_List2** head) {
+
+	if (n > 0) {
+		char* str;
+		str = new char[10];
+		cout << "Enter element: ";
+		cin >> str;
+
+		*head = new Single_List2();
+		(*head)->DATA = str;
+		(*head)->NEXT = NULL;
+		make_single_list2(n - 1, &(*head)->NEXT);
+	}
+	return 0;
+}
+
+int print_single_list2(Single_List2* head) {
+	if (head != nullptr) {
+		cout << head->DATA << "\t";
+		print_single_list2(head->NEXT);
+	}
+	else cout << endl;
+	return 0;
+}
+int _print_single_list2(Single_List2* head) {
+	if (head != nullptr) {
+		cout << head->DATA << "\t";
+		_print_single_list2(head->NEXT);
+	}
+	else cout << "";
+	return 0;
+}
+int single_list2even(Single_List2* head, int counter) {
+	for (Single_List2* Current = HEAD2; Current != NULL; Current = Current->NEXT) {
+		if (counter % 2 != 0)cout << Current->DATA << "\t";
+		counter++;
+	}
+	return 0;
+}
+void delete_single_list(Single_List2* Head) {
+	if (Head != nullptr) {
+		delete_single_list(Head->NEXT);
+		delete Head;
+	}
+}
+
+
+#pragma endregion
 
 
 
@@ -167,7 +174,7 @@ Single_List* insert_item_single_list(Single_List* Head, float Number, float Data
 
 
 
-
+#pragma region 8.3
 int make_double_list(int n, Double_List** Head, Double_List* Prev) {
 	if (n > 0) {
 		char* str;
@@ -198,15 +205,14 @@ int search_ind_d(char* data)
 {
 	int ind = 0;
 	for (Double_List* cur = DOUBLE_HEAD; cur != NULL; cur = cur->NEXT) {
-		if (cur->DATA == data)
-			return ++ind;
-		else ind++;
+		if (strcmp(cur->DATA, data) == 0)return ind;
+		ind++;
 	}
 }
 Double_List* delete_item_double_list(Double_List* Head, int Number) {
 	Double_List* ptr;//вспомогательный указатель
 	Double_List* Current = Head;
-	for (int i = 1; i < Number && Current != NULL; i++)
+	for (int i = 0; i < Number && Current != NULL; i++)
 		Current = Current->NEXT;
 	if (Current != NULL) {//проверка на корректность
 		if (Current->PREV == NULL) {//удаляем первый элемент
@@ -233,3 +239,10 @@ Double_List* delete_item_double_list(Double_List* Head, int Number) {
 	}
 	return Head;
 }
+#pragma endregion
+
+
+
+
+
+

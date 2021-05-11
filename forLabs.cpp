@@ -5,8 +5,9 @@ int main() {
 	setlocale(LC_ALL, "ru");
 	float N, num;
 	char* data = (char*)"Ch";
-#pragma region Первое задание
-	cout << "Количество элементов в списке: ";
+
+#pragma region 8.1
+	/*cout << "Количество элементов в списке: ";
 	cin >> N;
 	cout << "Искомое число: ";
 	cin >> num;
@@ -21,10 +22,10 @@ int main() {
 		insert_item_single_list(HEAD, search_ind(num), num);
 	cout << "Изменённый список" << endl;
 	print_single_list(HEAD);
-
+	*/
 #pragma endregion
 
-#pragma region 8.2
+#pragma region 8.2 full
 	/*cout << "Количество элементов в списке: ";
 	cin >> N;
 
@@ -41,20 +42,24 @@ int main() {
 	*/
 #pragma endregion 
 
-
-	/*
+#pragma region 8.3
 	cout << "Количество элементов в списке: ";
 	cin >> N;
 
 	make_double_list(N, &DOUBLE_HEAD, DOUBLE_HEAD->PREV);
 	cout << "Изнчальный список" << endl;
 	print_double_list(DOUBLE_HEAD);
-
-	delete_item_double_list(DOUBLE_HEAD, 3);
+	if (search_ind_d(data) != 0)
+		delete_item_double_list(DOUBLE_HEAD, search_ind_d(data) - 1);
 	cout << "Изменённый список" << endl;
 	print_double_list(DOUBLE_HEAD);
+
 	int index_of_spec_symbol = search_ind_d(data);
 	cout << "Индекс спец символа " << index_of_spec_symbol << endl;
-	*/
+
+#pragma endregion
+
+
+	
 	return 0;
 }
