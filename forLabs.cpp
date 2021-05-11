@@ -23,6 +23,8 @@ int main() {
 	print_single_list(HEAD);*/
 
 #pragma endregion
+
+#pragma region 8.2
 	cout << "Количество элементов в списке: ";
 	cin >> N;
 
@@ -36,11 +38,7 @@ int main() {
 	single_list2even(HEAD2, 1);
 
 	delete_single_list(HEAD2);
-	//print_single_list2(HEAD2); //FIXME ошибка при попытке вывода.
-
-	/*delete_single_list(HEAD2);
-	cout << endl << "Список после удаления" << endl;
-	print_single_list2(HEAD2);*/
+#pragma endregion 
 
 
 	/*

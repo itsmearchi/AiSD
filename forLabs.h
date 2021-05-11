@@ -3,7 +3,7 @@
 using namespace std;
 
 struct Single_List {
-	float DATA;
+	int DATA;
 	Single_List* NEXT;
 };
 Single_List* HEAD; //указатель на первый элемент списка
