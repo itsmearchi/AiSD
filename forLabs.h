@@ -1,18 +1,17 @@
+#pragma once
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-#pragma once
+
 struct Single_List {
 	int DATA;
 	Single_List* NEXT;
 };
 Single_List* HEAD; //указатель на первый элемент списка
 
-struct Double_List {
-	char* DATA;
-	Double_List* NEXT, * PREV;
-};
-Double_List* DOUBLE_HEAD = new Double_List;
+
 struct Single_List2 {
 
 	char* DATA;
@@ -22,7 +21,17 @@ struct Single_List2 {
 Single_List2* HEAD2;
 
 
+struct Double_List {
+	char* DATA;
+	Double_List* NEXT, * PREV;
+};
+Double_List* DOUBLE_HEAD = new Double_List;
 
+struct Double_List2 {
+	int DATA;
+	Double_List2* NEXT, * PREV;
+};
+Double_List2* DOUBLE_HEAD2 = new Double_List2;
 
 
 
@@ -246,3 +255,67 @@ Double_List* delete_item_double_list(Double_List* Head, int Number) {
 
 
 
+#pragma region 8.4
+//создание двунаправленного списка (добавления в конец)
+int Make_Double_List(int n, Double_List2** Head,
+	Double_List2* Prev) {
+	if (n > 0) {
+		*Head = new Double_List2;
+		//выделяем память под новый элемент
+		cout << "Введите значение ";
+		cin >> (*Head)->DATA;
+		//вводим значение информационного поля
+		(*Head)->PREV = Prev;
+		(*Head)->NEXT = NULL;//обнуление адресного поля
+		Make_Double_List(n - 1, &((*Head)->NEXT), (*Head));
+	}
+	else (*Head) = NULL;
+	return 0;
+}
+int Print_Double_List(Double_List2* Head) {
+	if (Head != NULL) {
+		cout << Head->DATA << "\t";
+		Print_Double_List(Head->NEXT);
+		//переход к следующему элементу
+	}
+	else cout << "\n";
+	return 0;
+}
+
+Double_List2* get_last_element_address(Double_List2* dHead) {
+
+	Double_List2* cur = dHead;
+	while (cur->NEXT != nullptr)
+		cur = cur->NEXT;
+
+	return cur;
+}
+
+
+
+vector<int> min_array;
+
+int set_min_array() {
+	Double_List2* address_last = get_last_element_address(DOUBLE_HEAD2);
+	Double_List2* address_first = DOUBLE_HEAD2;
+
+	while (address_first != nullptr && address_last != nullptr)
+	{
+		if (address_first->DATA < address_last->DATA)
+			min_array.push_back(address_first->DATA);
+		else min_array.push_back(address_last->DATA);
+
+		address_first = address_first->NEXT;
+		address_last = address_last->PREV;
+	}
+	return 0;
+}
+int get_max() {
+	int max = min_array[0];
+	for (int i = 1; i < min_array.size(); i++) {
+		if (min_array[i] > max)
+			max = min_array[i];
+	}
+	return max;
+}
+#pragma endregion

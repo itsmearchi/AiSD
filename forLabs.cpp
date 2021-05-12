@@ -3,7 +3,7 @@
 
 int main() {
 	setlocale(LC_ALL, "ru");
-	float N, num;
+	int N, num;
 	char* data = (char*)"Ch";
 
 #pragma region 8.1
@@ -43,7 +43,7 @@ int main() {
 #pragma endregion 
 
 #pragma region 8.3
-	cout << "Количество элементов в списке: ";
+	/*cout << "Количество элементов в списке: ";
 	cin >> N;
 
 	make_double_list(N, &DOUBLE_HEAD, DOUBLE_HEAD->PREV);
@@ -55,11 +55,23 @@ int main() {
 	print_double_list(DOUBLE_HEAD);
 
 	int index_of_spec_symbol = search_ind_d(data);
-	cout << "Индекс спец символа " << index_of_spec_symbol << endl;
+	cout << "Индекс спец символа " << index_of_spec_symbol << endl;*/
 
 #pragma endregion
 
+#pragma region 8.4
 
+	cout << "Количество элементов в списке(N). Итоговое кол-во = 2 * N: ";
+	cin >> N;
+
+	Make_Double_List(2 * N, &DOUBLE_HEAD2, DOUBLE_HEAD2->PREV);
+	Print_Double_List(DOUBLE_HEAD2);
+
+	set_min_array();
 	
+	cout << endl << "Максимальный из минимальных = "<< get_max();
+#pragma endregion
+
+
 	return 0;
 }
