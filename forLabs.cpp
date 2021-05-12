@@ -5,9 +5,14 @@ int main() {
 	setlocale(LC_ALL, "ru");
 	int N, num;
 	char* data = (char*)"Ch";
+<<<<<<< Updated upstream
 
 #pragma region 8.1
 	/*cout << "Количество элементов в списке: ";
+=======
+#pragma region Первое задание
+	cout << "Количество элементов в списке: ";
+>>>>>>> Stashed changes
 	cin >> N;
 	cout << "Искомое число: ";
 	cin >> num;
@@ -18,6 +23,7 @@ int main() {
 	print_single_list(HEAD);
 	cout << "Среднее арифметическое элементов списка = " << sum_list(HEAD) / N << endl << endl;
 
+<<<<<<< Updated upstream
 	if (search_ind(num) != N)
 		insert_item_single_list(HEAD, search_ind(num), num);
 	cout << "Изменённый список" << endl;
@@ -27,6 +33,17 @@ int main() {
 
 #pragma region 8.2 full
 	/*cout << "Количество элементов в списке: ";
+=======
+	insert_item_single_list(HEAD, search_ind(num+1), num);
+	insert(num);
+	cout << "Изменённый список" << endl;
+	print_single_list(HEAD);
+
+#pragma endregion
+
+/*#pragma region 8.2
+	cout << "Количество элементов в списке: ";
+>>>>>>> Stashed changes
 	cin >> N;
 
 	make_single_list2(N, &HEAD2);
